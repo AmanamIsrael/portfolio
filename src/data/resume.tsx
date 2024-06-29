@@ -3,7 +3,7 @@ import { Icons } from "@/components/icons";
 export const DATA = {
   name: "Amanam Israel",
   initials: "AI",
-  url: "https://dillion.io",
+  url: "https://github.com/amanamisrael",
   location: "Lagos, Nigeria",
   locationLink: "https://www.google.com/maps/place/lagos",
   description: "Frontend Engineer. I love building things that make life easy.",
