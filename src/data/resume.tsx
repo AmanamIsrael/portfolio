@@ -6,7 +6,7 @@ export const DATA = {
   url: "https://github.com/amanamisrael",
   location: "Lagos, Nigeria",
   locationLink: "https://www.google.com/maps/place/lagos",
-  description: "Frontend Engineer. I love building things that make life easy.",
+  description: "Frontend Engineer.",
   summary:
     "I am a Tech/Productivity enthusiast with a passion for programming and UI Design. I excel at developing efficient workflows, optimizing code for faster load times, and solving complex problems. I stay current with industry trends to ensure top-notch code quality. Currently, I build client-side payment solutions at Apex Network, using Javascript/Typescript, Nodejs, Express, VueJs, Nextjs, React, Angular, Docker, Tailwind, and Vite.",
   avatarUrl: "/me.jpg",
