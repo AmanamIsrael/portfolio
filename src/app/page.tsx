@@ -206,10 +206,8 @@ export default function Page() {
                 <Link
                   href={DATA.contact.social.X.url}
                   className="text-blue-500 hover:underline">
-                  with a direct question on twitter
+                  on twitter (X)
                 </Link>{" "}
-                and I&apos;ll respond whenever I can. I will ignore all
-                soliciting.
               </p>
             </div>
           </BlurFade>
