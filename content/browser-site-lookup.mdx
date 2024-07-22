@@ -1,29 +1,27 @@
 ---
 title: "What happens when you press enter after typing a URL in your browser?"
 publishedAt: "2024-07-23"
-summary: "So you enter “website.com” in your address bar and click enter. what happens in the split second before the page finally shows up?. A complex series of actions are being taken involving multiple package exchanges and protocols. Lets break down this process."
+summary: "You enter “website.com” in your address bar and click enter. what happens in the split second before the page finally shows up?. A complex series of actions are being taken involving multiple package exchanges and protocols. Lets break down this process."
 ---
 
-If you’re curious like me, you would often wonder how things work under the hood. I use my spare time to research how things work and i would like to share this bit with y’all.
-
-So you enter “website.com” in your address bar and click enter. what happens in the split second before the page finally shows up?. A complex series of actions are being taken involving multiple package exchanges and protocols. Lets break down this process.
+If you’re curious like me, you would often wonder how things work under the hood. You enter “website.com” in your address bar and click enter. what happens in the split second before the page finally shows up?. A complex series of actions are being taken involving multiple package exchanges and protocols. Lets break down this process.
 
 ### The Address Detective (DNS Lookup)
 
-Domain Name System (DNS) is basically a large library that for accessing domains and returning back the IP of the server that has the website the client (Your browser) is requesting.
+Domain Name System (DNS) is basically a large library of domains. when a domain is entered, it returns the IP address of the server that has the website the client (Your browser) is requesting.
 
 ```jsx
-// DNS Query (Your Browser): www.website.com ->
+// Your Browser makes a DNS Query: www.website.com ->
 // DNS found an IP for this address: 192.0.1.12 <- SENDS RESPONSE
 ```
 
 ### The Three Way Handshake (TCP Connection)
 
-Once the IP address has been found, your browser would initiate a TCP (Transmission control protocol) connection. Here the browser communicates with the server to multiple times establish a connection and know that each service is ready to communicate.
+Once the IP address has been found, your browser initiates a TCP (Transmission control protocol) connection. Your browser then communicates with the server multiple times to establish a connection that both are ready to communicate.
 
 - **SYN (Synchronise)**: Your browser sends a SYN packet to the server. This will be the starting point for data transmission
-- **SYN-ACK (Synchronise-acknowledge):** The server responds with a SYN-ACK packet to the client. This acknowledges the client’s SYN packet.
-- **ACK (Acknowledge):** The client sends a ACK again to the server to acknowledge this server’s SYN-ACK packet.
+- **SYN-ACK (Synchronise-acknowledge):** The server responds with a SYN-ACK packet to your browser. This acknowledges the browser's SYN packet.
+- **ACK (Acknowledge):** Your browser sends a ACK packet to the server to acknowledge this server’s SYN-ACK packet.
 
 ```jsx
 // Your Browser: SYN ->
@@ -35,13 +33,13 @@ At this point, the TCP connection has been established.
 
 ### Asking for the webpage (HTTP Request)
 
-Once the TCP connection has been established, The browser sends a HTTP (or HTTPS) request packet to the server.
+Once the TCP connection has been established, Your browser sends a HTTP (or HTTPS) request packet to the server.
 
 This packet would include a couple of things:
 
 - The HTTP Method (GET request to the server)
 - The requested resource (is usually a ./index.html file)
-- HTTP headers (Host, User-Agent, Authorisation)
+- HTTP headers (Host, User-Agent, Authorization)
 
 ```jsx
 // Your Browser: HTTP/HTTPS GET ./resource ->
@@ -50,11 +48,11 @@ This packet would include a couple of things:
 
 ### Delivering The Webpage (Server Response)
 
-The server processes the client’s request and sends back a HTTP (or HTTPS) response packet to the client.
+The server processes your browser’s request and sends back a HTTP (or HTTPS) response packet.
 
 This packet would also include a couple of things:
 
-- The HTTP status code (200 - Success, 401 - Unauthorised, 500 - Server Error)
+- The HTTP status code (200 - Success, 401 - Unauthorized, 500 - Server Error)
 - The requested resource(s) (HTML, CSS, Javascript files)
 - HTTP headers (Content-Type, Set-Cookie, Expires, Connection)
 
@@ -65,19 +63,19 @@ This packet would also include a couple of things:
 // Other Assets: Images, icons, videos.. etc
 ```
 
-At this stage, your browser takes over the ship and starts processing the files it has received. it renders the webpage and runs included assets including images, scripts and styles. Now you (the user) can interact with the website.
+At this stage, your browser takes the wheel and starts processing the files it has received. It renders the webpage and runs included assets like images, scripts and styles. Now you (the user) can interact with the website.
 
-### The Four Way Handshake (Closing the TCP connection)
+### The Four-Way Handshake (Closing the TCP connection)
 
-For most sites, websites don’t need to keep a connection with the server so the browser may close the TCP connection. This involves communicating with the server once again by sending packets.
+For most websites, there's no need to maintain a persistent connection with the server so your browser may close the TCP connection. This involves a specific sequence of packet exchanges with the server.
 
 There are 4 packets sent back and forth to close the connection:
 
 - **FIN:** Your browser sends a finish (FIN) packet to the server.
 - **ACK**: The server sends back a ACK packet to acknowledge this.
 
-- **FIN:** The server then sends its own FIN packet to the browser.
-- **ACK**: The browser sends back a ACK packet to acknowledge this.
+- **FIN:** The server then sends its own FIN packet to your browser.
+- **ACK**: Your browser sends back a ACK packet to acknowledge this.
 
 ```jsx
 // Your Browser: FIN ->
@@ -86,6 +84,6 @@ There are 4 packets sent back and forth to close the connection:
 // Your Browser: ACK ->
 ```
 
-This series of packet exchange ensure a reliable connection between the client and server which results in seamless loading and delivery of websites. The entire process takes a fraction of a second, showcasing the efficiency of modern web technology.
+This series of packet exchange ensure a reliable connection between the browser and server which results in seamless loading and delivery of websites. The entire process takes a fraction of a second, showcasing the efficiency of modern web technology.
 
 Thanks for reading.
