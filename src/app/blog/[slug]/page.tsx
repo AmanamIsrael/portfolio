@@ -94,9 +94,8 @@ export default async function Blog({
         </Suspense>
       </div>
       <article
-        className="prose dark:prose-invert"
-        dangerouslySetInnerHTML={{ __html: post.source }}
-      ></article>
+        className="prose dark:prose-invert mb-20"
+        dangerouslySetInnerHTML={{ __html: post.source }}></article>
     </section>
   );
 }
